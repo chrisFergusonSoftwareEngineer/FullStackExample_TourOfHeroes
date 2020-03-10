@@ -1,0 +1,130 @@
+swagger: "2.0"
+info:
+  version: "v1"
+  title: "Tour Of Heroes Examplar"
+  description: "Based on Angular's Tour of Heroes learning example."
+paths:
+  /api/heroes/:
+    get:
+      tags:
+      - "heroes"
+      summary: "Fetches the complete list of heroes"
+      description: "Fetches all of the heroes int he database and returns them to the caller."
+      operationId: "getHeroes"
+      produces:
+      - application/json
+      parameters:
+      - name: "id"
+        in: "query"
+        description: "ID if the caller wants exactly 0 or 1 specific hero."
+        required: false
+        type: "string"
+        x-exportParameterName: "ID"
+      - name: "name"
+        in: "query"
+        description: "Partial name of heroes to search for."
+        required: false
+        type: "string"
+        x-exportParameterName: "Name"
+      responses:
+        200:
+          description: "List of heroes"
+          examples:
+            application/json: [{ "id": 9999, "name": "Example Man" }, { "id": 9998, "name": "Lady Example" }]
+      x-swagger-router-controller: "Heroes"
+    post:
+      tags:
+      - "heroes"
+      summary: "Add one hero to the database"
+      description: "Adds one hero entry to the database and returns that hero to the caller."
+      operationId: "postHeroes"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "The hero to add to the database."
+        required: true
+        schema: {
+          $ref: "#/definitions/Hero"
+        }
+      produces:
+      - application/json
+      responses:
+        200:
+          description: "Successfully Created Hero"
+          examples:
+            application/json: { "id": 1234, "name": "Example Boy" }
+      x-swagger-router-controller: "Heroes"
+    put:
+      tags:
+      - "heroes"
+      summary: "Update a hero in the database"
+      description: "Updates a hero entry in the database."
+      operationId: "updateHeroes"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "The new values of a hero to store in the database."
+        required: true
+        schema: {
+          $ref: "#/definitions/Hero"
+        }
+      responses:
+        200:
+          description: "Successfully Updated Hero"
+        404:
+          description: "Failed to Update Hero"
+      x-swagger-router-controller: "Heroes"
+  /api/heroes/{id}:
+    get:
+      tags:
+      - "heroes"
+      summary: "Fetches exactly 1 specific hero."
+      description: "Attempts to fetch exactly one specified hero and return it to the caller."
+      operationId: "getHero"
+      produces:
+      - application/json
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of the hero to attempt to fetch."
+        required: true
+        type: "string"
+        x-exportParameterName: "ID"
+      responses:
+        200:
+          description: "Specified hero"
+          examples:
+            application/json: { "id": 9999, "name": "Example Man" }
+        404:
+          description: "Unable to find requested hero"
+      x-swagger-router-controller: "Heroes"
+    delete:
+      tags:
+      - "heroes"
+      summary: "Deletes specififed hero."
+      description: "Attempts to delete the specified hero."
+      operationId: "deleteHero"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of the hero to delete."
+        required: true
+        type: "string"
+        x-exportParameterName: "ID"
+      responses:
+        200:
+          description: "Successfully deleted"
+        404:
+          description: "Unable to find requested hero"
+      x-swagger-router-controller: "Heroes"
+      
+definitions:
+  Hero:
+    type: object
+    required:
+      - name
+    properties:
+      name:
+        type: string
+      id:
+        type: integer
