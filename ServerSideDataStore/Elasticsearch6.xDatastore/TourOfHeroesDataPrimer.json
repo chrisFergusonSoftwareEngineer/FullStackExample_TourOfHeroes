@@ -1,0 +1,20 @@
+{ "index" : { "_index" : "heroes"}}
+{ "id": 11, "name": "Dr Nice" }
+{ "index" : { "_index" : "heroes"}}
+{ "id": 12, "name": "Narco" }
+{ "index" : { "_index" : "heroes"}}
+{ "id": 13, "name": "Bombasto" }
+{ "index" : { "_index" : "heroes"}}
+{ "id": 14, "name": "Celeritas" }
+{ "index" : { "_index" : "heroes"}}
+{ "id": 15, "name": "Magneta" }
+{ "index" : { "_index" : "heroes"}}
+{ "id": 16, "name": "RubberMan" }
+{ "index" : { "_index" : "heroes"}}
+{ "id": 17, "name": "Dynama" }
+{ "index" : { "_index" : "heroes"}}
+{ "id": 18, "name": "Dr IQ" }
+{ "index" : { "_index" : "heroes"}}
+{ "id": 19, "name": "Magma" }
+{ "index" : { "_index" : "heroes"}}
+{ "id": 20, "name": "Tornado" }
