@@ -3,6 +3,7 @@ info:
   version: "v1"
   title: "Tour Of Heroes Examplar"
   description: "Based on Angular's Tour of Heroes learning example."
+host: localhost:3000
 paths:
   /api/heroes/:
     get:
